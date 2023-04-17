@@ -101,8 +101,8 @@ const Main = () => {
 
         setData(data);
 
-        const cardName = document.getElementsByClassName("card-name")[0]
-        console.log(cardName);
+        const cardName = document.getElementsByClassName("card-name")[0];
+        cardName.value = "";
 
         setUpdata(update?false:true);
     }
