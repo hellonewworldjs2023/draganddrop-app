@@ -49,3 +49,8 @@ body {
   border-radius: 10px;
   margin-top: 10px;
 }
+
+.create-card{
+  width: 200px;
+  height: 100px;
+}
