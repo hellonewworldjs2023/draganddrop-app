@@ -2,6 +2,8 @@
 
 const Card = ({children,onClick}) => {
 
+
+
     return(
         <>
             <div className="card">{children}</div>

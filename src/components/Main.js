@@ -12,6 +12,7 @@ const Main = () => {
     
     const onDragEnd = (result) => {
         const {source,destination} = result;
+        console.log(result);
 
         //別のカラムにタスクが移動したとき
         if(source.droppableId !== destination.droppableId){
@@ -55,14 +56,21 @@ const Main = () => {
         }        
     };
 
-    const removeCard = (result) => {
-        const {source} = result;
+    const removeCard = (id) => {
 
-        console.log(result);
+        console.log(id);
 
-         const sourceColIndex = data.findIndex((e) => e.id === onclick/*ボタンが押されたところ*/);
+        data.map((section) => {
+                console.log(section.title);
+                section.tasks.map((task) =>{
+                    console.log(task.title);
+                    //section.tasks.filter((tasks) => tasks.id !== id); 
+                }        
+                );
+            }
         
-        console.log(sourceColIndex);
+        );
+        
          // const sourceCol = data[sourceColIndex];
         
         // //配列のコピーを取る
@@ -75,35 +83,32 @@ const Main = () => {
 
         // setData(data);
     }
-    const consoleA = () => {
-        console.log("a");
-    }
 
     const createCard = (e) =>{
-        e.preventDefault();
-        console.log(inputText);
+        e.preventDefault(); 
 
-        const firstCol = data[0];
-        console.log(firstCol);
+        const firstCol = data[0];    
 
         //配列のコピーを取る
         const sourceTask = [...firstCol.tasks];
 
+        //代入する箇所の定義
         const addIndex = firstCol.tasks.length;
 
+        //代入するオブジェクトの定義
         const adding = {id:uuidv4(),title:inputText};
-
-        console.log(adding);
         
+        //配列に値を代入する 
         sourceTask.splice(addIndex, 0, adding);
-
         data[0].tasks = sourceTask;
 
         setData(data);
 
+        //入力した文字を消す
         const cardName = document.getElementsByClassName("card-name")[0];
         cardName.value = "";
 
+        //画面の強制再レンダリング
         setUpdata(update?false:true);
     }
 
@@ -141,7 +146,7 @@ const Main = () => {
                                                         opacity:snapshot.isDragging ? "0.3":"1",
                                                     }}
                                                 >
-                                                    <Card onClick={removeCard} >{task.title}</Card>
+                                                    <Card onClick={()=> removeCard(task.id)} id={task.id}>{task.title}</Card>
                                                 </div>
                                             )}
                                         </Draggable>

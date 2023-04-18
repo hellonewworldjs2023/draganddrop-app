@@ -1,11 +1,6 @@
 import React from 'react'
 
-const CreateCard = ({onClick,handleChange,e}) => {
-
-  // const handlechange = (e) => {
-  //   var inputtext = e.target.value;
-  //   console.log(inputtext);
-  // }
+const CreateCard = ({onClick,handleChange,}) => {
 
   return (
     <>
