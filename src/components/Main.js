@@ -12,7 +12,6 @@ const Main = () => {
     
     const onDragEnd = (result) => {
         const {source,destination} = result;
-        console.log(result);
 
         //別のカラムにタスクが移動したとき
         if(source.droppableId !== destination.droppableId){
@@ -58,30 +57,17 @@ const Main = () => {
 
     const removeCard = (id) => {
 
-        console.log(id);
+        //配列のコピーを取る
+        const cloneData = [...data];
 
-        data.map((section) => {
-                console.log(section.title);
-                section.tasks.map((task) =>{
-                    console.log(task.title);
-                    //section.tasks.filter((tasks) => tasks.id !== id); 
-                }        
-                );
+        //コピーした配列からカードを削除する
+        cloneData.forEach((section) => {
+            section.tasks = section.tasks.filter((task) => task.id !== id);
             }
-        
         );
-        
-         // const sourceCol = data[sourceColIndex];
-        
-        // //配列のコピーを取る
-        // const sourceTask = [...sourceCol.tasks];
 
-        // //タスクを削除
-        // sourceTask.splice(source.index, 1);
-
-        // data[sourceColIndex].tasks = sourceTask;
-
-        // setData(data);
+        //コピーから本来の配列に代入する
+        setData(cloneData);     
     }
 
     const createCard = (e) =>{
