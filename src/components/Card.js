@@ -10,7 +10,7 @@ const Card = ({children,onClick}) => {
 
             <button onClick={onClick}>　x　</button>
 
-            <button onClick={onClick}>xxxx</button>
+
 
         </>
     )
